@@ -15,7 +15,7 @@ import org.springframework.test.web.reactive.server.expectBody
 internal class SpanTest(@Autowired val webTestClient: WebTestClient) {
 
 	@Test
-    fun `find spand 1`() {
+    fun `find spand should find`() {
         webTestClient.get()
 			.uri("/spans")
 			.exchange()
@@ -25,7 +25,7 @@ internal class SpanTest(@Autowired val webTestClient: WebTestClient) {
     }
 	
 	@Test
-    fun `find spand 2`() {
+    fun `find spand again will fail`() {
         webTestClient.get()
 			.uri("/spans")
 			.exchange()
@@ -33,14 +33,4 @@ internal class SpanTest(@Autowired val webTestClient: WebTestClient) {
 			.expectBody<String>()
 			.returnResult().apply { assertThat(responseBody!!).isNotBlank() }
     }
-	
-	@Test
-	fun `find spand 3`() {
-		webTestClient.get()
-				.uri("/spans")
-				.exchange()
-				.expectStatus().isOk
-				.expectBody<String>()
-				.returnResult().apply { assertThat(responseBody!!).isNotBlank() }
-	}
 }
