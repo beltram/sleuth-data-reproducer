@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: sleuthTest
+  security:
+    user:
+      name: beltram
+#      password: password
