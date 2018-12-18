@@ -2,8 +2,6 @@ package com.beltram.sleuthgreenwichreproducer
 
 import org.assertj.core.api.AssertionsForInterfaceTypes.assertThat
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.parallel.Execution
-import org.junit.jupiter.api.parallel.ExecutionMode
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient
 import org.springframework.boot.test.context.SpringBootTest
@@ -11,9 +9,9 @@ import org.springframework.security.test.context.support.WithMockUser
 import org.springframework.test.web.reactive.server.WebTestClient
 import org.springframework.test.web.reactive.server.expectBody
 
+@WithMockUser
 @SpringBootTest
 @AutoConfigureWebTestClient
-@WithMockUser(username = "beltram")
 internal class SpanTest(@Autowired val webTestClient: WebTestClient) {
 
 	@Test
@@ -26,6 +24,7 @@ internal class SpanTest(@Autowired val webTestClient: WebTestClient) {
         findSpan()
     }
 	
+	// Just get current span back
 	private fun findSpan() {
 		webTestClient.get()
 				.uri("/spans")

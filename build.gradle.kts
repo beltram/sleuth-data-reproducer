@@ -5,7 +5,7 @@ import org.springframework.boot.gradle.plugin.SpringBootPlugin.*
 
 val springCloudVersion by extra { "Greenwich.RC1" }
 val kotlinVersion = "1.3.11"
-//val braveVersion = "5.6.0"
+
 buildscript {
 	repositories {
 		mavenCentral()
@@ -65,4 +65,3 @@ dependencies {
 }
 
 tasks.withType<Test> { useJUnitPlatform() }
-

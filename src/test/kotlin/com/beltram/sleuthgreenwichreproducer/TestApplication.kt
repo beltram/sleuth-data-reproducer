@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RestController
 import reactor.core.publisher.Mono
 import reactor.core.publisher.toMono
 
-@SpringBootApplication(scanBasePackages = ["com.beltram"])
 @EnableWebFluxSecurity
+@SpringBootApplication(scanBasePackages = ["com.beltram"])
 class TestApplication {
 	
 	@RestController
