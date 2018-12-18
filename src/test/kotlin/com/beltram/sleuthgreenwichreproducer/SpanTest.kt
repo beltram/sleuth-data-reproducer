@@ -2,6 +2,8 @@ package com.beltram.sleuthgreenwichreproducer
 
 import org.assertj.core.api.AssertionsForInterfaceTypes.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.parallel.Execution
+import org.junit.jupiter.api.parallel.ExecutionMode
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient
 import org.springframework.boot.test.context.SpringBootTest
@@ -11,7 +13,7 @@ import org.springframework.test.web.reactive.server.expectBody
 
 @SpringBootTest
 @AutoConfigureWebTestClient
-@WithMockUser(username="beltram")
+@WithMockUser(username = "beltram")
 internal class SpanTest(@Autowired val webTestClient: WebTestClient) {
 
 	@Test

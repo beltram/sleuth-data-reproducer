@@ -4,4 +4,3 @@ spring:
   security:
     user:
       name: beltram
-#      password: password
