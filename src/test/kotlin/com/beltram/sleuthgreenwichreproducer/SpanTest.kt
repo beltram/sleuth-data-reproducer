@@ -16,21 +16,20 @@ internal class SpanTest(@Autowired val webTestClient: WebTestClient) {
 
 	@Test
     fun `find spand should find`() {
-        webTestClient.get()
-			.uri("/spans")
-			.exchange()
-			.expectStatus().isOk
-			.expectBody<String>()
-			.returnResult().apply { assertThat(responseBody!!).isNotBlank() }
+		findSpan()
     }
 	
 	@Test
     fun `find spand again will fail`() {
-        webTestClient.get()
-			.uri("/spans")
-			.exchange()
-			.expectStatus().isOk
-			.expectBody<String>()
-			.returnResult().apply { assertThat(responseBody!!).isNotBlank() }
+        findSpan()
     }
+	
+	private fun findSpan() {
+		webTestClient.get()
+				.uri("/spans")
+				.exchange()
+				.expectStatus().isOk
+				.expectBody<String>()
+				.returnResult().apply { assertThat(responseBody!!).isNotBlank() }
+	}
 }
