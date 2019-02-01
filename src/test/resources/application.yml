@@ -1,3 +1,5 @@
 spring:
   application:
     name: sleuthTest
+  sleuth:
+    enabled: true

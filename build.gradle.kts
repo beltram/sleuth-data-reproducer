@@ -3,8 +3,8 @@ import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.springframework.boot.gradle.plugin.SpringBootPlugin.*
 
-val springCloudVersion by extra { "Greenwich.RC1" }
-val kotlinVersion = "1.3.11"
+val springCloudVersion by extra { "Greenwich.RELEASE" }
+val kotlinVersion = "1.3.20"
 
 buildscript {
 	repositories {
@@ -15,10 +15,10 @@ buildscript {
 }
 
 plugins {
-	val kotlinVersion = "1.3.11"
+	val kotlinVersion = "1.3.20"
 	kotlin("jvm") version kotlinVersion
 	kotlin("plugin.spring") version kotlinVersion
-	id("org.springframework.boot") version "2.1.1.RELEASE"
+	id("org.springframework.boot") version "2.1.2.RELEASE"
 }
 
 apply {
@@ -50,7 +50,7 @@ the<DependencyManagementExtension>().apply {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
-	implementation("org.springframework.boot:spring-boot-starter-security")
+	implementation("org.springframework.boot:spring-boot-starter-data-mongodb-reactive")
 	implementation("io.opentracing.brave:brave-opentracing") { exclude(module = "brave-tests") }
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.springframework.cloud:spring-cloud-starter-sleuth")
@@ -59,7 +59,7 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test") { exclude(module = "junit") }
 	testImplementation("io.projectreactor:reactor-test")
 	testImplementation("io.rest-assured:spring-web-test-client")
-	testImplementation("org.springframework.security:spring-security-test")
+	testRuntime("de.flapdoodle.embed:de.flapdoodle.embed.mongo")
 	testImplementation("org.junit.jupiter:junit-jupiter-api")
 	testRuntime("org.junit.jupiter:junit-jupiter-engine")
 }

@@ -1,1 +1,1 @@
-rootProject.name = "sleuth-greenwich-reproducer"
+rootProject.name = "sleuth-data-reproducer"
