@@ -3,8 +3,8 @@ import io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.springframework.boot.gradle.plugin.SpringBootPlugin.*
 
-val springCloudVersion by extra { "Greenwich.RELEASE" }
-val kotlinVersion = "1.3.20"
+val springCloudVersion by extra { "2020.0.2" }
+val kotlinVersion = "1.4.31"
 
 buildscript {
 	repositories {
@@ -15,10 +15,10 @@ buildscript {
 }
 
 plugins {
-	val kotlinVersion = "1.3.20"
+	val kotlinVersion = "1.4.31"
 	kotlin("jvm") version kotlinVersion
 	kotlin("plugin.spring") version kotlinVersion
-	id("org.springframework.boot") version "2.1.2.RELEASE"
+	id("org.springframework.boot") version "2.4.4"
 }
 
 apply {
@@ -56,6 +56,7 @@ dependencies {
 	implementation("org.springframework.cloud:spring-cloud-starter-sleuth")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
 	testImplementation("org.springframework.boot:spring-boot-starter-test") { exclude(module = "junit") }
 	testImplementation("io.projectreactor:reactor-test")
 	testImplementation("io.rest-assured:spring-web-test-client")
