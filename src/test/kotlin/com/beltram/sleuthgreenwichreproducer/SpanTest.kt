@@ -11,7 +11,7 @@ import org.springframework.test.web.reactive.server.expectBody
 
 @SpringBootTest
 @AutoConfigureWebTestClient
-internal class SpanTest(@Autowired val webTestClient: WebTestClient) {
+internal class SpanTest(@Autowired private val webTestClient: WebTestClient) {
 
     @Test
     fun `find simple span`() {
@@ -20,8 +20,7 @@ internal class SpanTest(@Autowired val webTestClient: WebTestClient) {
                 .exchange()
                 .expectStatus().isOk
                 .expectBody<SpanWrapper>()
-                .returnResult().apply {
-                    val spans = responseBody!!.spans
+                .returnResult().responseBody!!.apply {
                     assertThat(spans).hasSize(1).allMatch { it.isNotBlank() }
                 }
     }
@@ -33,8 +32,7 @@ internal class SpanTest(@Autowired val webTestClient: WebTestClient) {
                 .exchange()
                 .expectStatus().isOk
                 .expectBody<SpanWrapper>()
-                .returnResult().apply {
-                    val spans = responseBody!!.spans
+                .returnResult().responseBody!!.apply {
                     assertThat(spans).hasSize(2).allMatch { it.isNotBlank() }
                 }
     }
@@ -46,8 +44,7 @@ internal class SpanTest(@Autowired val webTestClient: WebTestClient) {
                 .exchange()
                 .expectStatus().isOk
                 .expectBody<SpanWrapper>()
-                .returnResult().apply {
-                    val spans = responseBody!!.spans
+                .returnResult().responseBody!!.apply {
                     assertThat(spans).hasSize(2).allMatch { it.isNotBlank() }
                 }
     }
