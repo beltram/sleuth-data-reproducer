@@ -37,7 +37,7 @@ class TestApplication {
             return tracer.spanId()
                     .map { result.add(it) }
                     .flatMap { repo.insert(Person(it)) }
-                    .flatMap { tracer.spanId() }
+                    .flatMap { tracer.spanId() } // <-- spanId is empty here
                     .map { result.add(it) }
                     .map { result }
         }
@@ -50,4 +50,4 @@ class TestApplication {
     data class Person(val span: String)
 }
 
-fun Tracer.spanId() = currentSpan()?.context()?.traceId()?.toString()?.toMono() ?: "".toMono()
+fun Tracer.spanId() = currentSpan()?.context()?.spanIdString().orEmpty().toMono()
