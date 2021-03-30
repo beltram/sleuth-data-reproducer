@@ -1,7 +1,7 @@
 package com.beltram.sleuthgreenwichreproducer
 
-import brave.Tracer
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.cloud.sleuth.Tracer
 import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -50,4 +50,4 @@ class TestApplication {
     data class Person(val span: String)
 }
 
-fun Tracer.spanId() = currentSpan()?.context()?.spanIdString().orEmpty().toMono()
+fun Tracer.spanId() = currentSpan()?.context()?.spanId().orEmpty().toMono()
